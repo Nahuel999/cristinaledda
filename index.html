@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cristina Ledda - Productora Asesora de Seguros en Mendoza. Seguros de auto, vida, hogar y comercio. Cotizá gratis hoy." />
+  <title>Cristina Ledda · Seguros</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d2b4e;
+      --navy-mid: #163e6e;
+      --blue: #1a6fbd;
+      --blue-light: #e8f2fc;
+      --gold: #c9a227;
+      --gold-light: #fdf6e3;
+      --text: #1a1a2e;
+      --muted: #5a6375;
+      --border: #d8e4f0;
+      --surface: #f7fafd;
+      --white: #ffffff;
+      --wa: #25D366;
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      color: var(--navy);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--wa);
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 30px;
+      transition: opacity 0.15s;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-cta svg { width: 16px; height: 16px; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--navy);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 20% 50%, rgba(26,111,189,0.35) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 30%, rgba(201,162,39,0.2) 0%, transparent 70%);
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.85);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 30px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge svg { width: 14px; height: 14px; }
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.2rem, 6vw, 3.4rem);
+      font-weight: 600;
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.72);
+      max-width: 420px;
+      margin: 0 auto 2.5rem;
+    }
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--wa);
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 14px 28px;
+      border-radius: 40px;
+      transition: transform 0.15s, opacity 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-primary svg { width: 20px; height: 20px; }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 14px 24px;
+      border-radius: 40px;
+      border: 1px solid rgba(255,255,255,0.25);
+      transition: background 0.15s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+    /* STRIP */
+    .trust-strip {
+      background: var(--gold-light);
+      border-top: 1px solid #eee3c0;
+      border-bottom: 1px solid #eee3c0;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--navy-mid);
+    }
+    .trust-item svg { width: 16px; height: 16px; color: var(--gold); }
+
+    /* SECTIONS */
+    .section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* SERVICES */
+    .services-bg { background: var(--surface); }
+    .services-inner { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 16px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.25rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .service-card:hover { box-shadow: 0 8px 24px rgba(13,43,78,0.08); transform: translateY(-2px); }
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .service-icon svg { width: 22px; height: 22px; color: var(--blue); }
+    .service-card h3 { font-size: 15px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+    .service-card p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* WHY */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+    .why-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .why-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: white;
+      font-family: 'Fraunces', serif;
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .why-item h4 { font-size: 15px; font-weight: 500; color: var(--navy); margin-bottom: 4px; }
+    .why-item p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* FORM */
+    .form-bg { background: var(--navy); }
+    .form-inner { padding: 4rem 2rem; max-width: 600px; margin: 0 auto; }
+    .form-inner .section-label { color: var(--gold); }
+    .form-inner .section-title { color: white; }
+    .form-inner .section-desc { color: rgba(255,255,255,0.65); }
+
+    .form-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .form-row { margin-bottom: 16px; }
+    .form-row label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      width: 100%;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 11px 14px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      outline: none;
+      appearance: none;
+    }
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(26,111,189,0.12);
+      background: white;
+    }
+    .form-row textarea { height: 90px; resize: none; }
+    .form-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .btn-form {
+      width: 100%;
+      background: var(--blue);
+      color: white;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .btn-form:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-form svg { width: 18px; height: 18px; }
+
+    .form-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #081b30;
+      color: rgba(255,255,255,0.55);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    footer .footer-name {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      color: white;
+      margin-bottom: 6px;
+    }
+    footer p { font-size: 13px; margin-bottom: 4px; }
+    footer a { color: var(--wa); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--wa);
+      color: white !important;
+      font-weight: 500;
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none !important;
+      margin: 1rem 0;
+    }
+    .footer-wa svg { width: 18px; height: 18px; }
+    .footer-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin: 1.5rem 0;
+    }
+
+    /* WA FLOAT BUTTON */
+    .wa-fixed {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--wa);
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 13px 20px;
+      border-radius: 40px;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-fixed:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+    .wa-fixed svg { width: 20px; height: 20px; }
+    @media (max-width: 480px) { .wa-fixed span { display: none; } .wa-fixed { padding: 14px; border-radius: 50%; } }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-inner > * { animation: fadeUp 0.6s ease both; }
+    .hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
+    .hero-inner > *:nth-child(2) { animation-delay: 0.15s; }
+    .hero-inner > *:nth-child(3) { animation-delay: 0.25s; }
+    .hero-inner > *:nth-child(4) { animation-delay: 0.35s; }
+
+    @media (max-width: 600px) {
+      .form-two { grid-template-columns: 1fr; }
+      .trust-strip { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Cristina <span>Ledda</span></div>
+  <a class="nav-cta" href="https://wa.me/542612166350?text=Hola%20Cristina%2C%20quisiera%20consultar%20sobre%20un%20seguro" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.849L0 24l6.335-1.508A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.84 0-3.568-.477-5.072-1.316l-.364-.215-3.762.896.944-3.659-.236-.374A9.964 9.964 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    WhatsApp
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      Productora Asesora de Seguros · Mendoza
+    </div>
+    <h1>Tu seguro ideal,<br><em>sin vueltas</em></h1>
+    <p class="hero-sub">Asesoramiento personalizado en autos, vida, hogar y comercio. Trabajé con las mejores compañías del mercado.</p>
+    <div class="hero-buttons">
+      <a class="btn-primary" href="https://wa.me/542612166350?text=Hola%20Cristina%2C%20quisiera%20consultar%20sobre%20un%20seguro" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.849L0 24l6.335-1.508A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.84 0-3.568-.477-5.072-1.316l-.364-.215-3.762.896.944-3.659-.236-.374A9.964 9.964 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Consultame ahora
+      </a>
+      <a class="btn-secondary" href="#cotizar">Pedir cotización</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    Asesoramiento sin costo
+  </div>
+  <div class="trust-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+    Respuesta el mismo día
+  </div>
+  <div class="trust-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+    Múltiples compañías
+  </div>
+  <div class="trust-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+    Atención personalizada
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="services-bg">
+  <div class="services-inner">
+    <div class="section-label">Coberturas</div>
+    <h2 class="section-title">¿Qué necesitás asegurar?</h2>
+    <p class="section-desc" style="margin-bottom:2rem">Trabajé con las principales aseguradoras del país para ofrecerte la mejor opción en cada rubro.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 17l-1.5-1.5A4 4 0 015 12.5V9a1 1 0 011-1h2V6a4 4 0 018 0v2h2a1 1 0 011 1v3.5a4 4 0 01-1.5 3.12L16 17"/><rect x="3" y="17" width="18" height="3" rx="1.5"/></svg>
+        </div>
+        <h3>Seguros de auto</h3>
+        <p>Todo riesgo, terceros completos, terceros básico. Para autos 0km o usados.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <h3>Vida y retiro</h3>
+        <p>Protegé el futuro de tu familia y planificá tu retiro con tranquilidad.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        </div>
+        <h3>Hogar</h3>
+        <p>Incendio, robo, responsabilidad civil y daños eléctricos para tu casa.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9h18v10a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M3 9l2.45-4.9A2 2 0 017.24 3h9.52a2 2 0 011.8 1.1L21 9"/><path d="M12 3v6"/></svg>
+        </div>
+        <h3>Comercio</h3>
+        <p>Cobertura integral para tu negocio: robo, incendio, vidrios y más.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY -->
+<section class="section">
+  <div class="section-label">Por qué elegirnos</div>
+  <h2 class="section-title">Asesoramiento real,<br>no solo una póliza</h2>
+  <p class="section-desc">No te vendo un seguro cualquiera. Te ayudo a entender qué cobertura necesitás y a elegir la que más te conviene.</p>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-num">1</div>
+      <div>
+        <h4>Escucho tu caso puntual</h4>
+        <p>Cada cliente es distinto. Me tomo el tiempo para entender tu situación antes de recomendar algo.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">2</div>
+      <div>
+        <h4>Comparo opciones por vos</h4>
+        <p>Tengo acceso a múltiples aseguradoras y te traigo las mejores alternativas en precio y cobertura.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">3</div>
+      <div>
+        <h4>Te acompaño ante un siniestro</h4>
+        <p>No te quedás solo cuando más lo necesitás. Te guío en todo el proceso de reclamo.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">4</div>
+      <div>
+        <h4>Sin letra chica</h4>
+        <p>Te explico exactamente qué cubre y qué no, para que no haya sorpresas después.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<div class="form-bg" id="cotizar">
+  <div class="form-inner">
+    <div class="section-label">Cotización gratis</div>
+    <h2 class="section-title">¿Cuánto me costaría?</h2>
+    <p class="section-desc">Completá el formulario y te respondo a la brevedad con la mejor opción para tu caso.</p>
+
+    <div class="form-card">
+      <div class="form-two">
+        <div class="form-row">
+          <label>Tu nombre</label>
+          <input type="text" placeholder="Ej: María González" />
+        </div>
+        <div class="form-row">
+          <label>WhatsApp / Teléfono</label>
+          <input type="tel" placeholder="261 555-0000" />
+        </div>
+      </div>
+      <div class="form-row">
+        <label>¿Qué necesitás asegurar?</label>
+        <select>
+          <option value="">Seleccioná una opción...</option>
+          <option>Auto</option>
+          <option>Vida / retiro</option>
+          <option>Hogar</option>
+          <option>Comercio</option>
+          <option>Más de uno / consulta general</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>Contame más (opcional)</label>
+        <textarea placeholder="Ej: tengo un Chevrolet Cruze 2019, quiero cotizar todo riesgo..."></textarea>
+      </div>
+      <button class="btn-form" onclick="window.open('https://wa.me/542612166350?text=Hola%20Cristina%2C%20quiero%20cotizar%20un%20seguro','_blank')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        Enviar consulta
+      </button>
+      <p class="form-note">También podés escribirme directo por WhatsApp al <a href="https://wa.me/542612166350" target="_blank">261 216-6350</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-name">Cristina Ledda</p>
+  <p>Productora Asesora de Seguros · Mendoza, Argentina</p>
+  <a class="footer-wa" href="https://wa.me/542612166350?text=Hola%20Cristina%2C%20quisiera%20consultar%20sobre%20un%20seguro" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.849L0 24l6.335-1.508A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.84 0-3.568-.477-5.072-1.316l-.364-.215-3.762.896.944-3.659-.236-.374A9.964 9.964 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    261 216-6350
+  </a>
+  <div class="footer-divider"></div>
+  <p style="font-size:12px">© 2025 Cristina Ledda · Todos los derechos reservados</p>
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<a class="wa-fixed" href="https://wa.me/542612166350?text=Hola%20Cristina%2C%20quisiera%20consultar%20sobre%20un%20seguro" target="_blank">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.849L0 24l6.335-1.508A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.84 0-3.568-.477-5.072-1.316l-.364-.215-3.762.896.944-3.659-.236-.374A9.964 9.964 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+  <span>Escribime</span>
+</a>
+
+</body>
+</html>
